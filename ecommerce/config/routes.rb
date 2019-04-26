@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :products
   resources :stores
+  resources :coupons
   resources :categories
   resources :brands
   get 'home/index'
