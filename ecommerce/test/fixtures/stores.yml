@@ -3,9 +3,9 @@
 one:
   name: MyString
   summary: MyText
-  seller: one
+  user: one
 
 two:
   name: MyString
   summary: MyText
-  seller: two
+  user: two

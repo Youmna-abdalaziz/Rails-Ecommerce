@@ -15,8 +15,8 @@ class StoresTest < ApplicationSystemTestCase
     click_on "New Store"
 
     fill_in "Name", with: @store.name
-    fill_in "Seller", with: @store.seller_id
     fill_in "Summary", with: @store.summary
+    fill_in "User", with: @store.user_id
     click_on "Create Store"
 
     assert_text "Store was successfully created"
@@ -28,8 +28,8 @@ class StoresTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @store.name
-    fill_in "Seller", with: @store.seller_id
     fill_in "Summary", with: @store.summary
+    fill_in "User", with: @store.user_id
     click_on "Update Store"
 
     assert_text "Store was successfully updated"
