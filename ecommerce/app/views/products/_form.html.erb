@@ -46,7 +46,13 @@
     <%= form.text_field :brand_id %>
   </div>
 
-  <div class="field">
+  <%= form.select(:brand_id) do %>
+    <% @brands.each do |brand| -%>
+      <%= content_tag(:option,brand.name) %>
+    <% end %>
+  <% end %>
+
+    <div class="field">
     <%= form.label :store_id %>
     <%= form.text_field :store_id %>
   </div>
@@ -55,3 +61,6 @@
     <%= form.submit %>
   </div>
 <% end %>
+<% @brands.each do |brand| %>
+  <h6><%= brand.name %></h6>
+<%end%>

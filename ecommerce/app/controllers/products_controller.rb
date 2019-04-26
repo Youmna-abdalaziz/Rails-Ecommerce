@@ -1,5 +1,23 @@
 class ProductsController < InheritedResources::Base
+def index
+  @products = Product.all
+  @brands = Brand.all
+  @categories = Category.all
+  @stores = Store.all
+end
 
+def new
+  @product = Product.new
+  @brands = Brand.all
+  @categories = Category.all
+  @stores = Store.all
+end
+
+def edit
+  @brands = Brand.all
+  @categories = Category.all
+  @stores = Store.all
+end
   private
 
     def product_params
