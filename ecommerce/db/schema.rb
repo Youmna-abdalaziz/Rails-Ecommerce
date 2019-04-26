@@ -10,6 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+=======
+ActiveRecord::Schema.define(version: 2019_04_26_145920) do
+>>>>>>> b454299090e1a691efeba3ab241a528addda3fb3
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -51,13 +55,18 @@
 
   create_table "coupons", force: :cascade do |t|
     t.datetime "expireddate"
+<<<<<<< HEAD
     t.integer "price"
+=======
+    t.integer "Dprice"
+>>>>>>> b454299090e1a691efeba3ab241a528addda3fb3
     t.integer "precentage"
     t.integer "usagenum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "order_produts", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -81,8 +90,13 @@
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+=======
+>>>>>>> b454299090e1a691efeba3ab241a528addda3fb3
   create_table "products", force: :cascade do |t|
     t.string "title"
+    t.text "image"
+    t.float "price"
+    t.integer "quantity_in_stock"
     t.text "description"
     t.integer "category_id"
     t.integer "brand_id"
@@ -113,10 +127,11 @@
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
-    t.integer "seller_id"
+    t.text "summary"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_stores_on_seller_id"
+    t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :coupons
   resources :categories
   resources :brands
+  resources :products
+  resources :stores
   get 'home/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

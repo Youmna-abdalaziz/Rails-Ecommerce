@@ -2,7 +2,8 @@ class CreateStores < ActiveRecord::Migration[5.2]
   def change
     create_table :stores do |t|
       t.string :name
-      t.references :seller, foreign_key: true
+      t.text :summary
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
