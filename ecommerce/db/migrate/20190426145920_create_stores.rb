@@ -3,7 +3,7 @@ class CreateStores < ActiveRecord::Migration[5.2]
     create_table :stores do |t|
       t.string :name
       t.text :summary
-      t.references :seller, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
