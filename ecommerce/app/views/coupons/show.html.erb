@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expireddate:</strong>
+  <%= @coupon.expireddate %>
+</p>
+
+<p>
+  <strong>D-price:</strong>
+  <%= @coupon.D-price %>
+</p>
+
+<p>
+  <strong>Precentage:</strong>
+  <%= @coupon.precentage %>
+</p>
+
+<p>
+  <strong>Usagenum:</strong>
+  <%= @coupon.usagenum %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>
