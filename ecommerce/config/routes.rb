@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :coupons
   resources :categories
   resources :brands
   get 'home/index'
