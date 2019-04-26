@@ -47,7 +47,7 @@
   </div>
 
   <%= form.select(:brand_id) do %>
-    <% @brands.each do |brand| -%>
+    <% @brands.each do |brand| %>
       <%= content_tag(:option,brand.name) %>
     <% end %>
   <% end %>
@@ -61,6 +61,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-<% @brands.each do |brand| %>
-  <h6><%= brand.name %></h6>
-<%end%>
