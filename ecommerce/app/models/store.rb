@@ -1,3 +1,3 @@
 class Store < ApplicationRecord
-  belongs_to :seller, :class_name => 'User'
+  belongs_to :seller
 end

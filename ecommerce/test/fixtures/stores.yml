@@ -2,8 +2,10 @@
 
 one:
   name: MyString
+  summary: MyText
   seller: one
 
 two:
   name: MyString
+  summary: MyText
   seller: two
