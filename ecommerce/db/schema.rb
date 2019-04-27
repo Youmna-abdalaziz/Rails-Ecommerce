@@ -124,9 +124,4 @@ ActiveRecord::Schema.define(version: 2019_04_27_161643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_coupons", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "coupon_id"
-  end
-
 end

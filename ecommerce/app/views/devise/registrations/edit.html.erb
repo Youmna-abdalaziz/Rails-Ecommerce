@@ -4,7 +4,7 @@
 <% if @user.avatar.attached? %>
 <div>
 <label>Profile Photo</label><br />
-<%= image_tag( @user.avatar, width: "350", height: "250")%>
+<%= image_tag( @user.avatar, width: "350", height: "250", class: "rounded-circle")%>
 </div>
 <% end %>
 

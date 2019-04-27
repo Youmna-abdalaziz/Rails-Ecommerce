@@ -21,6 +21,12 @@
   </thead>
 
   <tbody>
+  <% if (@products) %>
+    <% if (@products.empty?) %>
+      <p>No product found.</p>
+  <% else %>
+    
+  
     <% @products.each do |product| %>
       <tr>
         <td><%= product.title %></td>
@@ -47,3 +53,7 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+<% end %>
+<% else %>
+ <p>Use the search form to search for product.</p>
+<% end %>
