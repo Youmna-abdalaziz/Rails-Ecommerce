@@ -1,20 +1,19 @@
 class ProductsController < InheritedResources::Base
 
 
-  # def new
-  #   @category = Category.all
-  #   @brand = Brand.all
-  #   @store = Store.all
-  #   # authorize! :create, @article    
-  # end
+   def new
+     @product =Product.new
+     @categories = Category.all
+     @brands = Brand.all
+     @stores = Store.all 
+   end
 
-  # def edit
-  #   @category = Category.all
-  #   @brand = Brand.all
-  #   @store = Store.all
-  #   # authorize! :update, @category
-   
-  # end
+   def edit
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @brands = Brand.all
+    @stores = Store.all 
+   end
   
   private
 
