@@ -1,20 +1,29 @@
 class ProductsController < InheritedResources::Base
 
+   def index
+  
+      
+      @products=Product.all
+      
+      if params[:search]
+        @search_term=params[:search]
+        @products=@products.search_by(@search_term)
+      end
+    
+   end 
+   def new
+     @product =Product.new
+     @categories = Category.all
+     @brands = Brand.all
+     @stores = Store.all 
+   end
 
-  # def new
-  #   @category = Category.all
-  #   @brand = Brand.all
-  #   @store = Store.all
-  #   # authorize! :create, @article    
-  # end
-
-  # def edit
-  #   @category = Category.all
-  #   @brand = Brand.all
-  #   @store = Store.all
-  #   # authorize! :update, @category
-   
-  # end
+   def edit
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @brands = Brand.all
+    @stores = Store.all 
+   end
   
   private
 
