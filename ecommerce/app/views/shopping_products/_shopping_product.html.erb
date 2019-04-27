@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Shopping cart:</strong>
-  <%= @shopping_produt.shopping_cart %>
-</p>
+
 
 <p>
   <strong>Product:</strong>
-  <%= @shopping_produt.product %>
+  <%= @shopping_produt.product.title %>
+</p>
+<p>
+  <strong>Product:</strong>
+  <%= @shopping_produt.product.ptice %>
+</p>
+<p>
+  <strong>Product:</strong>
+  <%= @shopping_produt.product.image %>
 </p>
 
 <p>

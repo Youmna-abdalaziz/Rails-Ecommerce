@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
 
   has_many :shopping_products 
-  has_mny :shopping_carts , :through => :shopping_products
+  has_many :shopping_carts , :through => :shopping_products
   has_many :order_products
   has_many :orders , :through=>:order_products
 
