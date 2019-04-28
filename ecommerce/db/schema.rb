@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(version: 2019_04_28_113008) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.decimal "unit_price"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -73,11 +85,33 @@ ActiveRecord::Schema.define(version: 2019_04_28_113008) do
 
   create_table "coupons", force: :cascade do |t|
     t.datetime "expireddate"
-    t.integer "Dprice"
+    t.integer "price"
     t.integer "precentage"
     t.integer "usagenum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 1
+    t.decimal "unit_price"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "total_price"
+    t.decimal "actual_price"
+    t.string "status", default: "pending"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "coupons_users", id: false, force: :cascade do |t|
@@ -100,6 +134,8 @@ ActiveRecord::Schema.define(version: 2019_04_28_113008) do
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["store_id"], name: "index_products_on_store_id"
   end
+
+ 
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
