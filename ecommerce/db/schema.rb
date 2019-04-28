@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_04_26_164537) do
-=======
-ActiveRecord::Schema.define(version: 2019_04_26_185952) do
->>>>>>> 3086c3322b8e72e47701678bc4681731544040c2
+ActiveRecord::Schema.define(version: 2019_04_28_133216) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -69,6 +65,18 @@ ActiveRecord::Schema.define(version: 2019_04_26_185952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.decimal "unit_price"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -82,6 +90,18 @@ ActiveRecord::Schema.define(version: 2019_04_26_185952) do
     t.integer "usagenum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 1
+    t.decimal "unit_price"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
   create_table "order_produts", force: :cascade do |t|
@@ -121,13 +141,6 @@ ActiveRecord::Schema.define(version: 2019_04_26_185952) do
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["store_id"], name: "index_products_on_store_id"
-  end
-
-  create_table "shopping_carts", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
   create_table "shopping_produts", force: :cascade do |t|

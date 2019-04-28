@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  
+  resources :carts
   resources :coupons
   resources :categories
   resources :brands
@@ -22,10 +24,10 @@ Rails.application.routes.draw do
   
   
   
- 
-  resources :orders do 
-    resources :order_produts
-  end
+  
+  resources :orders 
+  resources :order_products 
+  
   resources :shopping_carts  do
     end
 
