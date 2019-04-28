@@ -3,6 +3,10 @@ class User < ApplicationRecord
  # mount_uploader :avatar, AvatarUploader
   has_and_belongs_to_many :coupons
   has_one_attached :avatar
+
+  def is_seller?
+       is_seller
+  end
   has_many :order_products
   has_many :products ,:through => :order_products
   has_many :carts
