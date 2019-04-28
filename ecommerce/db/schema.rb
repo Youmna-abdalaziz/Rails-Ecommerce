@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2019_04_27_161643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -115,6 +114,11 @@ ActiveRecord::Schema.define(version: 2019_04_27_161643) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "coupons_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "coupon_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "image"
@@ -131,15 +135,7 @@ ActiveRecord::Schema.define(version: 2019_04_27_161643) do
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
-  create_table "shopping_produts", force: :cascade do |t|
-    t.integer "shopping_cart_id"
-    t.integer "product_id"
-    t.integer "quantity", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_shopping_produts_on_product_id"
-    t.index ["shopping_cart_id"], name: "index_shopping_produts_on_shopping_cart_id"
-  end
+ 
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
