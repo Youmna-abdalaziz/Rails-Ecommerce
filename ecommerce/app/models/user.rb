@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 #class User < ActiveRecord::Base
  # mount_uploader :avatar, AvatarUploader
-  has_many:coupons
+  has_and_belongs_to_many :coupons
   has_one_attached :avatar
   has_many :order_products
   has_many :products ,:through => :order_products

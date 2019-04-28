@@ -1,6 +1,16 @@
 class ProductsController < InheritedResources::Base
 
-
+   def index
+  
+      
+      @products=Product.all
+      
+      if params[:search]
+        @search_term=params[:search]
+        @products=@products.search_by(@search_term)
+      end
+    
+   end 
    def new
      @product =Product.new
      @categories = Category.all
