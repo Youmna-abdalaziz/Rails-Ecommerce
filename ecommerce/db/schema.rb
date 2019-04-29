@@ -109,17 +109,6 @@ ActiveRecord::Schema.define(version: 2019_04_28_133216) do
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
-  create_table "order_produts", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "quantity"
-    t.decimal "unit_price"
-    t.string "status", default: "pending"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_produts_on_order_id"
-    t.index ["product_id"], name: "index_order_produts_on_product_id"
-  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
@@ -146,16 +135,6 @@ ActiveRecord::Schema.define(version: 2019_04_28_133216) do
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["store_id"], name: "index_products_on_store_id"
-  end
-
-  create_table "shopping_produts", force: :cascade do |t|
-    t.integer "shopping_cart_id"
-    t.integer "product_id"
-    t.integer "quantity", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_shopping_produts_on_product_id"
-    t.index ["shopping_cart_id"], name: "index_shopping_produts_on_shopping_cart_id"
   end
 
   create_table "stores", force: :cascade do |t|
