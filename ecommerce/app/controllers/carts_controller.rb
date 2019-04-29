@@ -33,7 +33,7 @@ class CartsController < ApplicationController
             @cart.product = @product
             @cart.quantity=1
             @cart.unit_price=@product.price
-            @cart.total =@product.unit_price
+            @cart.total =@product.price
           end
           @cart.save
           redirect_to product_carts_path(@product)
