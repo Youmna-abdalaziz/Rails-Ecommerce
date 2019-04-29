@@ -17,8 +17,8 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <td><%= cart.user %></td>
-        <td><%= cart.product %></td>
+        <td><%= cart.user.name %></td>
+        <td><%= cart.product.title %></td>
         <td><%= cart.quantity %></td>
         <td><%= cart.unit_price %></td>
         <td><%= cart.total %></td>

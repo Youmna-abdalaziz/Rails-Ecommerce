@@ -11,6 +11,7 @@ class ProductsController < InheritedResources::Base
         @products=@products.search_by(@search_term)
       end
    end 
+  
 
    def new
      @product =Product.new
