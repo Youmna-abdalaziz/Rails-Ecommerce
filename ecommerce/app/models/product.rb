@@ -27,12 +27,16 @@ class Product < ApplicationRecord
     store.user.name 
   end
   def self.search_by(search_term)
-    where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}")
+    # @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("category_id LIKE ?","#{filter_term}")
+
+    @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}")
   end
-  def self.filter(filter_term)
-    where("category_id LIKE ?","#{filter_term}")
+  def self.filter(filter_term,search_term)
+    @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("category_id LIKE ?","#{filter_term}")
   end
-  def self.filterb(filter_brand)
-    where("brand_id LIKE ?","#{filter_brand}")
+  def self.filterb(filter_brand,search_term)
+    @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("brand_id LIKE ?","#{filter_brand}")
+
+    # where("brand_id LIKE ?","#{filter_brand}")
   end
 end
