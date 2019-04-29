@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_133216) do
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
+
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "total_price"

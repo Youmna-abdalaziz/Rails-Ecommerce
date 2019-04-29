@@ -26,6 +26,7 @@ class ProductsController < InheritedResources::Base
       @products=Product.all
     end
    end 
+  
 
    def new
      @product =Product.new
