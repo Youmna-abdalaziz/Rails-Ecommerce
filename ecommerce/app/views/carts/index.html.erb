@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Product</th>
       <th>Quantity</th>
       <th>Unit price</th>
@@ -17,8 +16,8 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <td><%= cart.user.name %></td>
-        <td><%= cart.product.title %></td>
+        
+        <td><%= cart.cart_product %></td>
         <td><%= cart.quantity %></td>
         <td><%= cart.unit_price %></td>
         <td><%= cart.total %></td>
