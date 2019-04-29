@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_product, only: [:create,:new]
+  before_action :set_product, only: [:new]
       def new 
         @cart=Cart.new
         create
@@ -17,13 +17,13 @@ class CartsController < ApplicationController
       def create
           if current_user.carts.find_by(:product_id => @product)
             @cart = current_user.carts.find_by(:product_id => @product)
-            if @product.quantity_in_stock.to_i >= @cart.quantity+1
+            if @product.quantity_in_stock.to_i + 1 >= @cart.quantity
               @cart.quantity += 1
               @cart.unit_price=@product.price
               @cart.total =@product.price * @cart.quantity 
             end
           else
-            @cart = Cart.new
+            # @cart = Cart.new
             @cart.user = current_user
             @cart.product = @product
             @cart.quantity=1
@@ -51,7 +51,7 @@ class CartsController < ApplicationController
         end
 
         def reduce_quantity
-          @cart = Cart.find(params[:id])
+          # @cart = Cart.find(params[:id])
           if @cart.quantity > 1
             @cart.quantity -= 1
             @cart.total = @cart.quantity * @cart.unit_price
