@@ -6,9 +6,10 @@
   <thead>
     <tr>
       <th>Product</th>
-      <th>Quantity</th>
+      
       <th>Unit price</th>
       <th>Total</th>
+      <th>Quantity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,12 +19,11 @@
       <tr>
         
         <td><%= cart.cart_product %></td>
-        <td><%= cart.quantity %></td>
         <td><%= cart.unit_price %></td>
         <td><%= cart.total %></td>
-        <td><%= link_to 'Decrease', edit_cart_path(cart) %></td>
+        <td><%= render 'form', cart: cart %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Increase', new_cart_path(:product_id => cart.product.id) %></td>
+        
       </tr>
     <% end %>
   </tbody>
