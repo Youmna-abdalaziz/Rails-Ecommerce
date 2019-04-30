@@ -5,10 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Expireddate</th>
-      <th>Dprice</th>
-      <th>Precentage</th>
-      <th>Usagenum</th>
+      <th>Expiring Date</th>
+      <th>Discount Value</th>
+      <th>Discount Type</th>
+      <th>Usage Num</th>
+      <th>Expiring Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +17,11 @@
   <tbody>
     <% @coupons.each do |coupon| %>
       <tr>
-        <td><%= coupon.expireddate %></td>
-        <td><%= coupon.Dprice %></td>
-        <td><%= coupon.precentage %></td>
-        <td><%= coupon.usagenum %></td>
+        <td><%= coupon.expiring_date %></td>
+        <td><%= coupon.discount_value %></td>
+        <td><%= coupon.discount_Type %></td>
+        <td><%= coupon.usage_num %></td>
+        <td><%= coupon.expiring_type %></td>
         <td><%= link_to 'Show', coupon %></td>
         <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
         <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
