@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
  
   
-  resources :carts
+  # resources :carts
   resources :coupons
   resources :categories
   resources :brands
-  resources :products
+  resources :products 
+  resources :carts
+
   resources :stores
   get 'home/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   resources :orders 
   resources :order_products 
   
-  resources :shopping_carts  do
+  resources :carts  do
     end
 
 
