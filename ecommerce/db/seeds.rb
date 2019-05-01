@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 
 Brand.create(name: "Samsung")
@@ -30,9 +30,9 @@ Category.create(name: "Apparel")
 Category.create(name: "Books")
 
 
-Store.create(name:"first store",summary:"We recommend Monty Python and the Holy Grail for some light-humoured dummy text.",user_id:1)
-Store.create(name:"Second Store",summary:"Get ready for plenty of religious references that fail to make sense – Monty Python fans know what we mean",user_id:1)
+# Store.create(name:"first store",summary:"We recommend Monty Python and the Holy Grail for some light-humoured dummy text.",user_id:1)
+# Store.create(name:"Second Store",summary:"Get ready for plenty of religious references that fail to make sense – Monty Python fans know what we mean",user_id:2)
 
-Product.create(title:"Projector",image:"",price:1000,quantity_in_stock:100,description:"ready for plenty of religious references",category_id:2, brand_id:2,store_id:1)  
-Product.create(title:"Routers",image:"",price:800,quantity_in_stock:60,description:"ready for plenty of religious references",category_id:3, brand_id:5,store_id:2)  
-Product.create(title:"Printer",image:"",price:1000,quantity_in_stock:100,description:"ready for plenty of religious references",category_id:4, brand_id:3,store_id:1)  
+# Product.create(title:"Projector",image:"",price:1000,quantity_in_stock:100,description:"ready for plenty of religious references",category_id:2, brand_id:2,store_id:1)  
+# Product.create(title:"Routers",image:"",price:800,quantity_in_stock:60,description:"ready for plenty of religious references",category_id:3, brand_id:5,store_id:2)  
+# Product.create(title:"Printer",image:"",price:1000,quantity_in_stock:100,description:"ready for plenty of religious references",category_id:4, brand_id:3,store_id:1)  
