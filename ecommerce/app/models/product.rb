@@ -22,7 +22,10 @@ class Product < ApplicationRecord
     store.name
   end
 
-  
+  def find_store
+    store.product_store_id(current_user.id)
+  end
+
   def product_seller
     store.user.name 
   end

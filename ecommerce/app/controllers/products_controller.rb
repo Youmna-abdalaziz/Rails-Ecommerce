@@ -63,6 +63,24 @@ class ProductsController < InheritedResources::Base
      authorize! :crud, @product
    end
 
+   def create
+    @product =Product.new(product_params)
+    # @stores=Store.all
+    # st_id=@stores.get_seller_store(current_user.id)
+    # st_id=Store.select(:id).where(user_id:current_user.id)
+
+
+    st_id=Store.select("id,name").where({user_id:current_user.id})
+
+    # st=Store.where(user_id:current_user.id)
+    # st_id=st.id
+    puts "product store is ***************************************************************************++++++ #{st_id}"
+    @product.store_id=st_id
+    @product.save
+    redirect_to @product
+  
+   end
+
    def edit
     @product = Product.find(params[:id])
     @categories = Category.all

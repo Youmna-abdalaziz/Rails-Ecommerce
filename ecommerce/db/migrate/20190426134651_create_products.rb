@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :description
       t.references :category, foreign_key: true
       t.references :brand, foreign_key: true
-      t.references :store, foreign_key: true
+      # t.references :store, foreign_key: true
 
       t.timestamps
     end
