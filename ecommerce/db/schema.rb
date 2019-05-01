@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_130706) do
+ActiveRecord::Schema.define(version: 2019_04_30_203031) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -83,13 +83,15 @@ ActiveRecord::Schema.define(version: 2019_05_01_130706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.datetime "expireddate"
-    t.integer "price"
-    t.integer "precentage"
-    t.integer "usagenum"
+  create_table "coupons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "expiring_type"
+    t.integer "discount_value"
+    t.string "discount_Type"
+    t.integer "current_usage"
+    t.integer "usage_num"
+    t.datetime "expiring_date"
   end
 
   create_table "coupons_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

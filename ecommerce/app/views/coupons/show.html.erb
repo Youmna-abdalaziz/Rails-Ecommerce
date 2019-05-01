@@ -1,23 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Expireddate:</strong>
-  <%= @coupon.expireddate %>
+  <strong>Expiring_date:</strong>
+  <%= @coupon.expiring_date %>
 </p>
 
 <p>
-  <strong>Dprice:</strong>
-  <%= @coupon.Dprice %>
+  <strong>Discount Value:</strong>
+  <%= @coupon.discount_value %>
 </p>
 
 <p>
-  <strong>Precentage:</strong>
-  <%= @coupon.precentage %>
+  <strong>Discount Type:</strong>
+  <%= @coupon.discount_Type %>
 </p>
 
 <p>
-  <strong>Usagenum:</strong>
-  <%= @coupon.usagenum %>
+  <strong>Usage Num:</strong>
+  <%= @coupon.usage_num %>
+</p>
+
+<p>
+  <strong>Expiring Type:</strong>
+  <%= @coupon.expiring_type %>
 </p>
 
 <%= link_to 'Edit', edit_coupon_path(@coupon) %> |
