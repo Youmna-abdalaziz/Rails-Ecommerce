@@ -55,7 +55,7 @@
     <%# <%= form.collection_select(:store_id,@stores,:id,:name,{ :prompt => 'Select a Store', :selected => @product.store_id }, { class: 'form-control' } )%>
   <%# </div> %>
 
-  <%# <%= form.hidden_field :store_id, :value => @product.find_store %>
+  <%# <%= form.hidden_field :store_id, :value => Store.select(:name).where(user_id:current_user.id).to_a.first%> %>
 
   <div class="actions">
     <%= form.submit %>
