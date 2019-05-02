@@ -16,7 +16,12 @@ class Product < ApplicationRecord
   def product_brand
     brand.name
   end
-
+  def product_seller
+    user.name
+  end
+  def product_coupon
+   coupon.title
+  end
   def self.search_by(search_term)
     # @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("category_id LIKE ?","#{filter_term}")
 

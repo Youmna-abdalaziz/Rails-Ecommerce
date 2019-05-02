@@ -34,6 +34,7 @@
   <% if (@products) %>
     <% if (@products.empty?) %>
       <p>No product found.</p>
+      <%= link_to 'New Product', new_product_path %>
   <% else %>
     
   
