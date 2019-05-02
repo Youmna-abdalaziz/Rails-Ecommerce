@@ -2,21 +2,11 @@
 
 <%= render 'form', order: @order %>
 
-<h2>Add a order_products:</h2> 
-
-<%= form_for(@order) do |f| %>
-  <p>
-    <%= f.label :products %><br />
-    <% for product in Product.all %>
-      
-      <%= check_box_tag "order[product_ids][]", product.id, @order.products.include?(product) %>
-      <%=h product.title %><br />
-    <% end %>
-  </p>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+<div class="alert alert-error">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-warning" role="alert"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
 
 <%= link_to 'Back', orders_path %>
