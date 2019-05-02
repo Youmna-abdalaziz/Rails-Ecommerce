@@ -32,7 +32,7 @@ class CartsController < ApplicationController
               @cart.total =@product.price * @cart.quantity 
             end
           else
-           @cart = Cart.new
+            @cart = Cart.new
             @cart.user = current_user
             @cart.product = @product
             @cart.quantity=1

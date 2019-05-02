@@ -59,30 +59,18 @@ class ProductsController < InheritedResources::Base
      @product =Product.new
      @categories = Category.all
      @brands = Brand.all
-     @stores = Store.all 
-     authorize! :crud, @product
-   end
-
-   def create
-    @product =Product.new(product_params)
-    puts "pppppppppppppppppp #{product_params}"
-    store_id=Store.select(:id).where(user_id:current_user).to_a.first
-    @product.store_id =store_id
-    puts "SSSSSSSSSSSSSSSSSSSSSSSSS *** store id : #{store_id} +product ################ #{@product}"
-    if @product.save
-      redirect_to @product
-    else
-      render 'new'
-    end
-    authorize! :crud, @product
+    #  @stores = Store.all 
+     @users = User.where(id:current_user.id)
+    #  authorize! :crud, @product
    end
 
    def edit
     @product = Product.find(params[:id])
     @categories = Category.all
     @brands = Brand.all
-    @stores = Store.all 
-    authorize! :crud, @product
+    # @stores = Store.all 
+    @users = User.where(id:current_user.id)
+    # authorize! :crud, @product
    end
   
   private
