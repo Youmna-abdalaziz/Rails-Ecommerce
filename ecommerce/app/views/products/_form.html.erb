@@ -50,10 +50,10 @@
     <%= form.collection_select(:brand_id,@brands,:id,:name,{ :prompt => 'Select a Brand', :selected => @product.brand_id }, { class: 'form-control' } )%>
   </div>
 
-  <div class="field">
+  <%# <div class="field">
     <%= form.label :user_id %>
-    <%= form.collection_select(:user_id,@users,:id,:name,{ :prompt => 'Select a Seller', :selected => @product.user_id }, { class: 'form-control' } )%>
-  </div>
+    <%# <%= form.collection_select(:user_id,@users,:id,:name,{ :prompt => 'Select a Seller', :selected => @product.user_id }, { class: 'form-control' } )%> 
+  <%# </div>  %>
 
   <div class="actions">
     <%= form.submit %>
