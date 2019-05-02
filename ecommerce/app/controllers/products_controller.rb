@@ -68,7 +68,7 @@ class ProductsController < InheritedResources::Base
     @product = Product.new(product_params)
     puts "=============== #{product_params}==================="
     @product.user_id = current_user.id
-    if @product.save
+    if @product.save!
       redirect_to @product
     else
         render 'new'
