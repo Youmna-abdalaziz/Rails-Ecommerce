@@ -1,7 +1,7 @@
 class ProductsController < InheritedResources::Base
-  before_action :authenticate_user!, except: [:index]
+  #before_action :authenticate_user!, except: [:index]
     # include CanCan::ControllerAdditions
-  load_and_authorize_resource
+  #load_and_authorize_resource
   def index
     unless  params[:search]
       @products=Product.all

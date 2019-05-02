@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_070809) do
   end
 
   create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "Dprice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "expiring_type"
