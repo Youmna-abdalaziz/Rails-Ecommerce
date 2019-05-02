@@ -60,8 +60,19 @@ class ProductsController < InheritedResources::Base
      @categories = Category.all
      @brands = Brand.all
     #  @stores = Store.all 
-     @users = User.where(id:current_user.id)
+    #  @users = User.where(id:current_user.id)
     #  authorize! :crud, @product
+   end
+
+   def create
+    @product = Product.new(product_params)
+    puts "=============== #{product_params}==================="
+    @product.user_id = current_user.id
+    if @product.save
+      redirect_to @product
+    else
+        render 'new'
+    end
    end
 
    def edit
@@ -76,7 +87,7 @@ class ProductsController < InheritedResources::Base
   private
 
     def product_params
-      params.require(:product).permit(:title, :image, :price, :quantity_in_stock, :description, :category_id, :brand_id, :store_id)
+      params.require(:product).permit(:title, :image, :price, :quantity_in_stock, :description, :category_id, :brand_id)
     end
 
     
