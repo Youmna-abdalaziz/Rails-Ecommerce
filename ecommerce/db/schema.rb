@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_130706) do
+ActiveRecord::Schema.define(version: 2019_05_02_070809) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -130,12 +130,14 @@ ActiveRecord::Schema.define(version: 2019_05_01_130706) do
     t.text "description"
     t.bigint "category_id"
     t.bigint "brand_id"
+    t.bigint "user_id"
+    t.bigint "coupon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "store_id"
-    t.integer "coupon_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["coupon_id"], name: "index_products_on_coupon_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -170,5 +172,7 @@ ActiveRecord::Schema.define(version: 2019_05_01_130706) do
   add_foreign_key "orders", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "coupons"
+  add_foreign_key "products", "users"
   add_foreign_key "stores", "users"
 end
