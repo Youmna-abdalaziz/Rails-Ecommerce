@@ -69,8 +69,11 @@ class ProductsController < InheritedResources::Base
     store_id=Store.select(:id).where(user_id:current_user).to_a.first
     @product.store_id =store_id
     puts "SSSSSSSSSSSSSSSSSSSSSSSSS *** store id : #{store_id} +product ################ #{@product}"
-    @product.save
-    redirect_to @product
+    if @product.save
+      redirect_to @product
+    else
+      render 'new'
+    end
     authorize! :crud, @product
    end
 
