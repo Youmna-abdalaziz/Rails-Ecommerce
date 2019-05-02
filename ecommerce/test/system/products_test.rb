@@ -16,12 +16,13 @@ class ProductsTest < ApplicationSystemTestCase
 
     fill_in "Brand", with: @product.brand_id
     fill_in "Category", with: @product.category_id
+    fill_in "Coupon", with: @product.coupon_id
     fill_in "Description", with: @product.description
     fill_in "Image", with: @product.image
     fill_in "Price", with: @product.price
     fill_in "Quantity in stock", with: @product.quantity_in_stock
-    fill_in "Store", with: @product.store_id
     fill_in "Title", with: @product.title
+    fill_in "User", with: @product.user_id
     click_on "Create Product"
 
     assert_text "Product was successfully created"
@@ -34,12 +35,13 @@ class ProductsTest < ApplicationSystemTestCase
 
     fill_in "Brand", with: @product.brand_id
     fill_in "Category", with: @product.category_id
+    fill_in "Coupon", with: @product.coupon_id
     fill_in "Description", with: @product.description
     fill_in "Image", with: @product.image
     fill_in "Price", with: @product.price
     fill_in "Quantity in stock", with: @product.quantity_in_stock
-    fill_in "Store", with: @product.store_id
     fill_in "Title", with: @product.title
+    fill_in "User", with: @product.user_id
     click_on "Update Product"
 
     assert_text "Product was successfully updated"
