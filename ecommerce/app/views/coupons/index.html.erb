@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Coupon Title</th>
       <th>Expiring Date</th>
       <th>Discount Value</th>
       <th>Discount Type</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @coupons.each do |coupon| %>
       <tr>
+        <td><%= coupon.title %></td>
         <td><%= coupon.expiring_date %></td>
         <td><%= coupon.discount_value %></td>
         <td><%= coupon.discount_Type %></td>
