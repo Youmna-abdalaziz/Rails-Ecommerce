@@ -2,15 +2,16 @@ class OrdersController < InheritedResources::Base
   # before_action :validates, only: [:new,:create]
 
 
-#   def show
-#       @order = Order.find(params[:id])
-#   end
+   def show
+       @order = Order.find(params[:id])
+   end
   def new
       @order = Order.new
     end
-#   def index
-#       @orders = Order.all
-#   end
+   def index
+      @orders = current_user.orders
+      #Order.all
+   end
 #   def edit
 #       @orders = Order.find(params[:id])
 #   end

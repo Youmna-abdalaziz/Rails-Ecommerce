@@ -9,7 +9,8 @@ class User < ApplicationRecord
   end
 
   has_many :order_products
-  has_many :products ,:through => :order_products
+  has_many :orders ,:through => :order_products
+  has_many :orders
   has_many :carts
   has_many :products ,:through => :carts
 

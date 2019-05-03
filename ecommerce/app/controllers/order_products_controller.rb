@@ -10,7 +10,8 @@ class OrderProductsController < InheritedResources::Base
   def validate_coupon              ### in model coupon  time or count
   end
 
-  def validate_user              ###  in model user or coupon_user   
+  def validate_user   
+    current_user.c           ###  in model user or coupon_user   
   end
 
 
