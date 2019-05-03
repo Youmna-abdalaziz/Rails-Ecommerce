@@ -43,4 +43,13 @@ class Product < ApplicationRecord
   def self.filterp(price,tprice,search_term)
     @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("price > ? AND price < ? " , "#{price.to_i}","#{tprice.to_i}")
   end
+  def get_coupon
+    # product = Product.find(id:product_id)
+    if self.coupon_id.to_i !=0
+      @current_coupon = self.coupon
+    else
+     @current_coupon =0
+    end 
+    @current_coupon
+ end
 end
