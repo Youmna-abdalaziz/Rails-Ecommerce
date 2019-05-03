@@ -1,12 +1,11 @@
 <div class="container">
-<br>
-<%= form_with(model: @product, local: true) do |form| %>
-  <% if @product.errors.any? %>
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <% @product.errors.full_messages.each do |message| %>
+      <% product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -19,9 +18,8 @@
   </div>
 
   <div class="field">
-     <%= form.label :image %>
+    <%= form.label :image %>
     <%= form.file_field :image %>
-    <%# <%= form.label :image %> 
     <%# <%= form.text_area :image %> 
   </div>
 
@@ -50,10 +48,20 @@
     <%= form.collection_select(:brand_id,@brands,:id,:name,{ :prompt => 'Select a Brand', :selected => @product.brand_id }, { class: 'form-control' } )%>
   </div>
 
+  <%# <div class="field">
+    <%= form.label :user_id %>
+    <%# <%= form.text_field :user_id %> 
+  <%# </div> %> 
+
   <div class="field">
-    <%= form.label :store_id %>
-    <%= form.collection_select(:store_id,@stores,:id,:name,{ :prompt => 'Select a Store', :selected => @product.store_id }, { class: 'form-control' } )%>
+    <%= form.label :coupon_id  %>
+    <%= form.collection_select(:coupon_id ,@coupons,:id,:id,{ :prompt => 'Select a Coupon', :selected => @product.coupon_id  }, { class: 'form-control' } )%>
   </div>
+
+  <%# <div class="field">
+    <%= form.label :coupon_id %>
+    <%# <%= form.text_field :coupon_id %> 
+  <%# </div> %> 
 
   <div class="actions">
     <%= form.submit %>

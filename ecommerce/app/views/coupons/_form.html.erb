@@ -12,23 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :expireddate %>
-    <%= form.datetime_select :expireddate %>
+    <%= form.label :expiring_date %>
+    <%= form.datetime_select :expiring_date %>
   </div>
 
   <div class="field">
-    <%= form.label :Dprice %>
-    <%= form.number_field :Dprice %>
+    <%= form.label :discount_value %>
+    <%= form.number_field :discount_value %>
   </div>
 
   <div class="field">
-    <%= form.label :precentage %>
-    <%= form.number_field :precentage %>
-  </div>
+    <%= form.label :discount_Type %>
+    <%= form.text_field(:discount_Type) %>
+
+    </div>
 
   <div class="field">
-    <%= form.label :usagenum %>
-    <%= form.number_field :usagenum %>
+    <%= form.label :usage_num %>
+    <%= form.number_field :usage_num %>
+  </div>
+  <div class="field">
+    <%= form.label :expiring_type %>
+    <%= form.text_field(:expiring_type) %>
   </div>
 
   <div class="actions">

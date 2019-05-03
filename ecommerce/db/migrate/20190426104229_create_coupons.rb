@@ -5,7 +5,7 @@ class CreateCoupons < ActiveRecord::Migration[5.2]
       t.integer :price
       t.integer :precentage
       t.integer :usagenum
-
+      t.integer :Dprice
       t.timestamps
     end
   end

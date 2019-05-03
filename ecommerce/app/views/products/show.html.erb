@@ -7,9 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <% if @product.image.attached? %>
-    <%= image_tag @product.image %>
-  <% end %>
+  <%= @product.image %>
 </p>
 
 <p>
@@ -29,20 +27,23 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.product_category %>
+  <%= @product.category %>
 </p>
 
 <p>
   <strong>Brand:</strong>
-  <%= @product.product_brand %>
+  <%= @product.brand %>
 </p>
 
 <p>
-  <strong>Store:</strong>
-  <%= @product.product_store %>
+  <strong>User:</strong>
+  <%= @product.user %>
 </p>
 
-
+<p>
+  <strong>Coupon:</strong>
+  <%= @product.coupon %>
+</p>
 <%= button_to "Add to cart", carts_path(:product_id => @product.id) %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -1,7 +1,7 @@
 class ProductsController < InheritedResources::Base
   before_action :authenticate_user!, except: [:index]
     # include CanCan::ControllerAdditions
-  load_and_authorize_resource
+  # load_and_authorize_resource
   def index
     unless  params[:search]
       @products=Product.all
@@ -47,36 +47,49 @@ class ProductsController < InheritedResources::Base
         
 
  
-    end
+      end
 
 
     end
 
- end 
+  end 
   
 
-   def new
-     @product =Product.new
-     @categories = Category.all
-     @brands = Brand.all
-     @stores = Store.all 
-     authorize! :crud, @product
-   end
+  def new
+    @product =Product.new
+    @categories = Category.all
+    @brands = Brand.all
+    @coupons=Coupon.all
+    #  @stores = Store.all 
+    #  @users = User.where(id:current_user.id)
+    #  authorize! :crud, @product
+  end
 
-   def edit
+  def create
+    @product = Product.new(product_params)
+    puts "=============== #{product_params}==================="
+    @product.user_id = current_user.id
+    # @product.coupon_id = current_user.id
+    if @product.save
+      redirect_to @product
+    else
+        render 'new'
+    end
+  end
+
+  def edit
     @product = Product.find(params[:id])
     @categories = Category.all
     @brands = Brand.all
-    @stores = Store.all 
-    authorize! :crud, @product
-   end
-  
+    # @stores = Store.all 
+    @users = User.where(id:current_user.id)
+    # authorize! :crud, @product
+  end
+
   private
 
     def product_params
-      params.require(:product).permit(:title, :image, :price, :quantity_in_stock, :description, :category_id, :brand_id, :store_id)
+      params.require(:product).permit(:title, :image, :price, :quantity_in_stock, :description, :category_id, :brand_id, :coupon_id)
     end
-
-    
 
 end
