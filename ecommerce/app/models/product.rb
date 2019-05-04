@@ -16,8 +16,8 @@ class Product < ApplicationRecord
   validates :price , presence:true, on: :update
   validates :quantity_in_stock , presence:true, on: :create
   validates :quantity_in_stock , presence:true, on: :update
-  validates :description , presence:true,:length => { :minimum => 8,:maximum   => 100, } , on: :create
-  validates :description , presence:true,:length => { :minimum => 8,:maximum   => 100, } , on: :update
+  validates :description , presence:true,:length => { :minimum => 4,:maximum   => 100, } , on: :create
+  validates :description , presence:true,:length => { :minimum => 4,:maximum   => 100, } , on: :update
 
   def product_category
     category.name
