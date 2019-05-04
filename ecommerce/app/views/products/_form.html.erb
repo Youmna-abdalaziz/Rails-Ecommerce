@@ -55,7 +55,7 @@
 
   <div class="field">
     <%= form.label :coupon_id  %>
-    <%= form.collection_select(:coupon_id ,@coupons,:id,:id,{ :prompt => 'Select a Coupon', :selected => @product.coupon_id  }, { class: 'form-control' } )%>
+    <%= form.collection_select(:coupon_id ,@coupons,:id,:coupon_info ,{ :prompt => 'Select a Coupon', :selected => @product.coupon_id  }, { class: 'form-control' } )%>
   </div>
 
   <%# <div class="field">
