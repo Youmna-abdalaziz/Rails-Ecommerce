@@ -1,6 +1,7 @@
 class OrdersController < InheritedResources::Base
   # before_action :validates, only: [:new,:create]
 
+  before_action :authenticate_user!
 
    def show
        @order = Order.find(params[:id])
