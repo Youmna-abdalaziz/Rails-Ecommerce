@@ -34,7 +34,7 @@
             <%= image_tag product.image  , class:"card-img-top" , style:"height:90%"%>
             <% end %>
             <div class="card-body" style="height:40%" >
-              <p class="card-title" style="float:left"><%= product.title %></p>
+              <p class="card-title" style="float:left"><%= link_to product.title, product  %></p>
               <p class="card-text" style="float:right;margin-left:10%"> $ <%= product.price %></p>
               <div style="clear:both"></div>
               <%= link_to 'Add To Cart', product , class:"btn btn-primary" %>
