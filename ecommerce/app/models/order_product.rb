@@ -30,7 +30,7 @@ class OrderProduct < ApplicationRecord
       self.coupon.discount_value
   end
   def actual_price_with_coupon
-    if self.get_discount_type == "fixed"
+    if self.get_discount_type == "Fixed"
         return self.fixed_discount
     else
        return self.percentage_discount 
