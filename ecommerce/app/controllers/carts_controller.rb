@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_product, only: [:new,:create]
       def new 
         @cart=Cart.new

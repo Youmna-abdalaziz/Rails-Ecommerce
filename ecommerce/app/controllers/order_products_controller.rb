@@ -1,6 +1,6 @@
 class OrderProductsController < InheritedResources::Base
 
-
+  before_action :authenticate_user!
   def index
     @order_products =OrderProduct.all
     

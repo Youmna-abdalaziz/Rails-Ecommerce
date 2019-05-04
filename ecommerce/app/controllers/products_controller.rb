@@ -131,7 +131,7 @@ class ProductsController < InheritedResources::Base
     @product.user_id = current_user.id
     # @product.coupon_id = current_user.id
     if @product.save
-      redirect_to @product
+      redirect_to products_path
     else
         render 'new'
     end
@@ -143,7 +143,8 @@ class ProductsController < InheritedResources::Base
     @brands = Brand.all
     @coupons=Coupon.all
     # @stores = Store.all 
-    @users = User.where(id:current_user.id)
+    # @users = User.where(id:current_user.id)
+    @product.user_id = current_user.id
     # authorize! :crud, @product
   end
 
