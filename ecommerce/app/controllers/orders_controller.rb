@@ -60,7 +60,7 @@ class OrdersController < InheritedResources::Base
                       @order_product.quantity =item.quantity
                       @order_product.unit_price =item.unit_price
                       @order_product.status="pending"
-                      @order_product.actual_price = item.unit_price * item.quantity
+                      @order_product.calculate_actual_price
                       @order_product.save
                       ############ after save order _product 
                       total_price += @order_product.quantity * @order_product.unit_price
