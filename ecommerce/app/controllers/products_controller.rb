@@ -3,13 +3,27 @@ class ProductsController < InheritedResources::Base
     # include CanCan::ControllerAdditions
   # load_and_authorize_resource
   def index
-    unless  params[:search]
+    if user_signed_in?
+      if current_user.is_seller?
+       @products=Product.where(user_id:current_user.id)
+     else
+        @products=Product.all
+      end
+    else 
       @products=Product.all
-      @brand=Brand.all
-      @category=Category.all    
-      @user=User.all
-      
     end
+    @brand=Brand.all
+    @category=Category.all    
+    @user=User.all
+    # ==========================
+    # unless  params[:search]
+    #   @products=Product.all
+    #   @brand=Brand.all
+    #   @category=Category.all    
+    #   @user=User.all
+      
+    # end
+    # =============================
     # if params[:search] and params[:product][:category_id]=nil
     if params[:search]
       @search_term=params[:search]
