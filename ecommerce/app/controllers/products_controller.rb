@@ -141,6 +141,7 @@ class ProductsController < InheritedResources::Base
     @product = Product.find(params[:id])
     @categories = Category.all
     @brands = Brand.all
+    @coupons=Coupon.all
     # @stores = Store.all 
     @users = User.where(id:current_user.id)
     # authorize! :crud, @product

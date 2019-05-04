@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
           redirect_to root_url, :alert => exception.message
         end
      before_action :configure_permitted_parameters, if: :devise_controller?
+     #helper_method :current_user
+
+     #def current_user
+      #    @current_user = User.find_by(id: session[:user])
+     #end
+
 
     protected
     def configure_permitted_parameters

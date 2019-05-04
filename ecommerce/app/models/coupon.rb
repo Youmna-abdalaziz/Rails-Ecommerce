@@ -21,6 +21,10 @@ class Coupon < ApplicationRecord
         end        
     end
 
+    def coupon_info
+        coupinfo=self.discount_Type + " with value: " +self.discount_value.to_s
+        coupinfo
+    end  
     
 
    def get_products
