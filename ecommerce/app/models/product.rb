@@ -9,6 +9,16 @@ class Product < ApplicationRecord
   has_many :carts
   has_many :users, :through =>:carts
 
+  
+  validates :title , presence:true, on: :create
+  validates :title , presence:true, on: :update
+  validates :price , presence:true, on: :create
+  validates :price , presence:true, on: :update
+  validates :quantity_in_stock , presence:true, on: :create
+  validates :quantity_in_stock , presence:true, on: :update
+  validates :description , presence:true,:length => { :minimum => 8,:maximum   => 100, } , on: :create
+  validates :description , presence:true,:length => { :minimum => 8,:maximum   => 100, } , on: :update
+
   def product_category
     category.name
   end
