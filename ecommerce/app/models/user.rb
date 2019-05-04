@@ -21,8 +21,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
- def validate_user_with_coupon coupon_id
-          self.coupons[coupon_id]        ###  in model user or coupon_user   
+ def is_validate_user_coupon coupon_id
+           ! self.coupons[coupon_id].present?      ###  in model user or coupon_user   
  end
 
 

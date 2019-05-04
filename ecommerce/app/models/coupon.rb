@@ -21,13 +21,7 @@ class Coupon < ApplicationRecord
         end        
     end
 
-   def get_discount_type
-    self.discount_Type
-   end
-   
-   def get_discount_value
-    self.discount_value
-   end
+    
 
    def get_products
     @products=Product.all
