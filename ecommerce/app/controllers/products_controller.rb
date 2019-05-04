@@ -147,6 +147,18 @@ class ProductsController < InheritedResources::Base
     # authorize! :crud, @product
   end
 
+  def update
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @brands = Brand.all
+    @coupons=Coupon.all
+    if @product.update(product_params)
+      redirect_to @product
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def product_params
