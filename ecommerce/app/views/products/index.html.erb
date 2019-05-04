@@ -11,6 +11,8 @@
 <%= collection_select :product, :user_id, @user, :id,:name, prompt: true %>
 
   <%= collection_select :product, :category_id, @category, :id,:name, prompt: true %>
+  
+  <br>
   <span>Price from </span> <%= number_field 'fromprice','price' %>
   <span>Price to </span><%= number_field 'toprice','tprice' %>
   <%= submit_tag "select product" %>
@@ -37,9 +39,9 @@
               <p class="card-title" style="float:left"><%= link_to product.title, product  %></p>
               <p class="card-text" style="float:right;margin-left:10%"> $ <%= product.price %></p>
               <div style="clear:both"></div>
-              <%= link_to 'Add To Cart', product , class:"btn btn-primary" %>
-               <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-danger", style:"margin-left:20%;" %>
-              
+              <%= link_to 'Add To Cart', product , class:"btn btn-outline-info" %>
+               <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger glyphicon glyphicon-remove", style:"margin-left:20%;" %>
+               
             </div>
           </div>
     <% end %>  
