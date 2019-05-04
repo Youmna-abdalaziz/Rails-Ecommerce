@@ -9,7 +9,8 @@ class User < ApplicationRecord
   end
 
   has_many :order_products
-  has_many :products ,:through => :order_products
+  has_many :orders ,:through => :order_products
+  has_many :orders
   has_many :carts
   has_many :products ,:through => :carts
 
@@ -19,6 +20,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+ def is_validate_user_coupon coupon_id
+           ! self.coupons[coupon_id].present?      ###  in model user or coupon_user   
+ end
 
 
   

@@ -8,9 +8,12 @@
 <%= text_field_tag :search ,@search_term, placeholder: "search..." %>
 <%= form_tag products_path ,:method => 'get' do%>
 <%= collection_select :product, :brand_id, @brand, :id,:name, prompt: true %>
+<%= collection_select :product, :user_id, @user, :id,:name, prompt: true %>
 
   <%= collection_select :product, :category_id, @category, :id,:name, prompt: true %>
-  <%= submit_tag "select category" %>
+  <span>Price from </span> <%= number_field 'fromprice','price' %>
+  <span>Price to </span><%= number_field 'toprice','tprice' %>
+  <%= submit_tag "select product" %>
 <% end %> 
 <% end %>
 
@@ -22,6 +25,7 @@
   <% if (@products) %>
     <% if (@products.empty?) %>
       <p>No product found.</p>
+      <%= link_to 'New Product', new_product_path %>
   <% else %>
       <% @products.each do |product| %>
 					<!-- Product -->
