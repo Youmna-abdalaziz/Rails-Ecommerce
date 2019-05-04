@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field(:title) %>
+  </div>
+
+  <div class="field">
     <%= form.label :expiring_date %>
     <%= form.datetime_select :expiring_date %>
   </div>
@@ -23,7 +28,8 @@
 
   <div class="field">
     <%= form.label :discount_Type %>
-    <%= form.text_field(:discount_Type) %>
+    <%= form.select :discount_Type, options_for_select(["Fixed", "Percentage"]), :class => 'genForm_dropBox' %>
+
 
     </div>
 
@@ -33,7 +39,7 @@
   </div>
   <div class="field">
     <%= form.label :expiring_type %>
-    <%= form.text_field(:expiring_type) %>
+    <%= form.select :expiring_type, options_for_select(["Usage_num", "Expiring_date","Both"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="actions">
