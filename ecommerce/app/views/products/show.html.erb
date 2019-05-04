@@ -1,51 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-top:100px">
+	<div class="row">
+		<!-- Product Image -->
+		<div class="col-lg-6">
+			<div style="width:100%">
+				<% if @product.image.attached? %>
+            <%= image_tag @product.image ,style:"width:100%;border-radius:30px;"%>
+        <% end %>
+							
+			</div>
+		</div>
+    <!-- Product Info -->
+		<div class="col-lg-6 text-center">
+			<div style="margin-left:20px;">
+				<h2  style="color:#4a4a96;"><%= @product.title %></h2>
+        <br>
+        <h4 style="color:#4a4a96;">Description: <%= @product.description %></h4>
+        <h4 style="color:#4a4a96;">Price: <%= @product.price %></h4>
+        <h4 style="color:#4a4a96;">Brand: <%= @product.product_brand %></h4>
+        <h4 style="color:#4a4a96;">Category: <%= @product.product_category %></h4>
+      
+        <h4 style="color:#4a4a96;">Quantity In Stock : <%= @product.quantity_in_stock %></h4>
+       <br>
+       <br>
+						<%= link_to "Add to cart", carts_path(:product_id => @product.id) ,class:"btn btn-success" %>	
+            
+            <%= link_to 'Back', products_path  ,class:"btn btn-warning"%>
+            
+            <br><br>
+            <%
+=begin%>
+ <%= link_to 'Edit', edit_product_path(@product),class:"btn btn-outline-primary" %>  
+<%
+=end%>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+				</div>
+			</div>
 
-<p>
-  <strong>Image:</strong>
-  <% if @product.image.attached? %>
-    <%= image_tag @product.image %>
-   <% end %>
-</p>
+		</div>
+	</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Quantity in stock:</strong>
-  <%= @product.quantity_in_stock %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.product_category %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @product.product_brand %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @product.product_seller %>
-</p>
-
-<p>
-  <strong>Coupon:</strong>
-  <%= @product.product_coupon %>
-</p>
-<%= button_to "Add to cart", carts_path(:product_id => @product.id) %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
