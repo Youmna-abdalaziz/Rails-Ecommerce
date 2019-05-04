@@ -29,4 +29,8 @@ class Coupon < ApplicationRecord
     self.discount_value
    end
 
+   def get_products
+    @products=Product.all
+   end
+
 end
