@@ -7,6 +7,4 @@ class Order < ApplicationRecord
   validates :credit_cart, presence:true, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." },:length => { :is => 10, } , on: :create
   validates :phone, presence:true, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." },:length => { :is => 12, } , on: :create
 
-
-
 end
