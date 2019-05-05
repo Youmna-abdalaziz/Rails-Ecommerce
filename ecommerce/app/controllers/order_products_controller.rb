@@ -4,34 +4,22 @@ class OrderProductsController < InheritedResources::Base
   before_action :check_state ,only: [:index]
     
     def index
-    #   if current_user.is_seller ==1
       
-    #   @pro_seller=Product.where("user_id = ?",current_user)
-    #   @pro_seller.each do |pro|
-    #   @order_products=OrderProduct.where("product_id = ?",pro)
-    #   end
-    # end
-      @order_products=OrderProduct.all
-
-      @user_id=current_user
-        @product = Product.all
-      @orders=Order.all
-      @orders.each do |order|
-        @orders_id=order.id
-      end
-      # @c=Product.where(["quantity_in_stock= ?",0])
-    end
-    # def check_seller
-    #   @pro_seller=current_user.products
-    #   @order_products=OrderProduct.all
-    #   @order_products.each do |order|
-    #     @order_seller=order.product.is_seller
-    #     # @product = Product.where(@order_seller)
-    #     if @order_seller == 1 and  current_user
-
-
+      if @user_seller=current_user.is_seller
         
-    #   end
+        @pro_seller=Product.where("user_id = ?",current_user.id)
+        @p=[]
+        @pro_seller.each do |pro|
+        @p << (pro.id)
+       end
+       @order_products=OrderProduct.where(product_id:@p)    
+      end
+
+      # @order_products=OrderProduct.all
+        @product = Product.all
+        @orders=Order.all
+
+    end
     
     def check_quantity
       @order_products=OrderProduct.find(params[:id])
