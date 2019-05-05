@@ -38,8 +38,10 @@
               <p class="card-text" style="float:right;margin-left:10%"> $ <%= product.price %></p>
               <div style="clear:both"></div>
               <%= link_to 'Add To Cart', product , class:"btn btn-outline-info" %>
-              <% if current_user.is_seller? %>
-               <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger glyphicon glyphicon-remove", style:"margin-left:20%;" %>
+              <% if user_signed_in? %>
+                <% if current_user.is_seller? %>
+                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger glyphicon glyphicon-remove", style:"margin-left:20%;" %>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -48,9 +50,10 @@
   <% end %>
   </div>
   <br><br>
-
-  <% if current_user.is_seller? %>
-    <%= link_to 'New Product', new_product_path ,class:"btn btn-success" %>
+  <% if user_signed_in? %>
+    <% if current_user.is_seller? %>
+      <%= link_to 'New Product', new_product_path ,class:"btn btn-success" %>
+    <% end %>
   <% end %>
   
 
