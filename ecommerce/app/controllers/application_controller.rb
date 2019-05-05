@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
       #    @current_user = User.find_by(id: session[:user])
      #end
 
+     # rescue_from ActionController::RoutingError do |exception|
+     #      flash[:error] = "There is no such route"
+     #      redirect_to root_url
+     # end
+      
+
 
     protected
     def configure_permitted_parameters

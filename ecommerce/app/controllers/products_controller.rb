@@ -1,8 +1,8 @@
 class ProductsController < InheritedResources::Base
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
     # include CanCan::ControllerAdditions
   load_and_authorize_resource
-  skip_authorize_resource :only => :index
+  skip_authorize_resource :only => [:index, :show]
   def index
     if user_signed_in?
       if current_user.is_seller?
