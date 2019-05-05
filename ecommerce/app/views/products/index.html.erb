@@ -50,6 +50,7 @@
   <% end %>
   </div>
   <br><br>
+  <!-- Only Sellers can see this link -->
   <% if user_signed_in? %>
     <% if current_user.is_seller? %>
       <%= link_to 'New Product', new_product_path ,class:"btn btn-success" %>

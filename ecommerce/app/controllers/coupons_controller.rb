@@ -1,12 +1,15 @@
 class CouponsController < InheritedResources::Base
+  load_and_authorize_resource
 
   def index
     @coupons=Coupon.all
-    @products=Product.all        
+    @products=Product.all 
+    authorize! :crud, @coupon       
     end
     def new
       @coupon =Coupon.new
-      @products=Product.all        
+      @products=Product.all 
+      authorize! :crud, @coupon              
     end
   
     def create
@@ -17,11 +20,13 @@ class CouponsController < InheritedResources::Base
       else
           render 'new'
       end
+      authorize! :crud, @coupon       
     end
   
     def edit
       @coupon = Coupon.find(params[:id])
-      @products=Product.all        
+      @products=Product.all 
+      authorize! :crud, @coupon              
     end
 
 
