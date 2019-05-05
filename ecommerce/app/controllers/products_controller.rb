@@ -1,7 +1,8 @@
 class ProductsController < InheritedResources::Base
   before_action :authenticate_user!, except: [:index]
     # include CanCan::ControllerAdditions
-  # load_and_authorize_resource
+  load_and_authorize_resource
+  skip_authorize_resource :only => :index
   def index
     if user_signed_in?
       if current_user.is_seller?
@@ -118,7 +119,7 @@ class ProductsController < InheritedResources::Base
     @coupons=Coupon.all
     #  @stores = Store.all 
     #  @users = User.where(id:current_user.id)
-    #  authorize! :crud, @product
+    authorize! :crud, @product
   end
 
   def create
@@ -135,6 +136,7 @@ class ProductsController < InheritedResources::Base
     else
         render 'new'
     end
+    authorize! :crud, @product
   end
 
   def edit
@@ -145,7 +147,7 @@ class ProductsController < InheritedResources::Base
     # @stores = Store.all 
     # @users = User.where(id:current_user.id)
     @product.user_id = current_user.id
-    # authorize! :crud, @product
+    authorize! :crud, @product
   end
 
   def update
@@ -158,6 +160,7 @@ class ProductsController < InheritedResources::Base
     else
       render 'edit'
     end
+    authorize! :crud, @product
   end
 
   private
