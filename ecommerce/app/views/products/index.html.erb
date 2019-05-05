@@ -38,8 +38,9 @@
               <p class="card-text" style="float:right;margin-left:10%"> $ <%= product.price %></p>
               <div style="clear:both"></div>
               <%= link_to 'Add To Cart', product , class:"btn btn-outline-info" %>
+              <% if can? :crud, @product %>
                <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger glyphicon glyphicon-remove", style:"margin-left:20%;" %>
-               
+              <% end %>
             </div>
           </div>
     <% end %>  
@@ -52,6 +53,3 @@
   <% end %>
 
   </div>
-
-
-
