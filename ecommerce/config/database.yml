@@ -9,7 +9,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # database: rails_db
+  #database: rails_db
   username: <%= ENV['USER_NAME'] %>
   password: <%= ENV['PASSWORD'] %>
   host: 127.0.0.1
@@ -33,4 +33,4 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: rails_db

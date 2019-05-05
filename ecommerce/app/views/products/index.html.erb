@@ -1,70 +1,61 @@
+
+<div class="container" style="margin-top: 25px; margin: auto;">
 <p id="notice"><%= notice %></p>
 <%= @order %>
 
 <h1>Products</h1>
-<p>search with title or description:<p>
-<%= form_for "",url: products_path ,role:"search", method: :get do%>
-<%= text_field_tag :search ,@search_term, placeholder: "search..." %>
-<%= form_tag products_path ,:method => 'get' do%>
-<%= collection_select :product, :brand_id, @brand, :id,:name, prompt: true %>
-<%= collection_select :product, :user_id, @user, :id,:name, {:selected => "whatever"} %>
+<% if user_signed_in? %>
+  <p>search with title or description:<p>
+  <%= form_for "",url: products_path ,role:"search", method: :get do%>
+    <%= text_field_tag :search ,@search_term, placeholder: "search..." %>
+    <%= form_tag products_path ,:method => 'get' do%>
+      <%= collection_select :product, :brand_id, @brand, :id,:name, prompt: true %>
+      <%= collection_select :product, :user_id, @user, :id,:name, prompt: true %>
 
-  <%= collection_select :product, :category_id, @category, :id,:name, prompt: true %>
-  <span>Price from </span> <%= number_field 'fromprice','price' %>
-  <span>Price to </span><%= number_field 'toprice','tprice' %>
-  <%= submit_tag "select product" %>
-<% end %> 
+      <%= collection_select :product, :category_id, @category, :id,:name, prompt: true %>
+  
+      <br>
+      <span>Price from </span> <%= number_field 'fromprice','price' %>
+      <span>Price to </span><%= number_field 'toprice','tprice' %>
+      <%= submit_tag "select product" %>
+    <% end %> 
+  <% end %>
 <% end %>
- 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Price</th>
-      <th>Quantity in stock</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Brand</th>
-      <th>Store</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row products_row" style="margin-top: 10px; margin: auto;">
 
-  <tbody>
   <% if (@products) %>
     <% if (@products.empty?) %>
       <p>No product found.</p>
+      <%= link_to 'New Product', new_product_path %>
   <% else %>
-    
-  
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <%# <td><%= product.image</td>  %>
-        <td>
-          <% if product.image.attached? %>
-            <%= image_tag product.image %>
-          <% end %>
-        </td>
-        <td><%= product.price %></td>
-        <td><%= product.quantity_in_stock %></td>
-        <td><%= product.description %></td>
-        <td><%= product.product_category %></td>
-        <td><%= product.product_brand %></td>
-        <%# <td><%= product.product_store</td> %>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% @products.each do |product| %>
+					<!-- Product -->
+					<div class="card" style="width: 18rem; margin-top: 45px; margin-right: 3%;">
+            <% if product.image.attached? %>
+            <%= image_tag product.image  , class:"card-img-top" , style:"height:90%"%>
+            <% end %>
+            <div class="card-body" style="height:40%" >
+              <p class="card-title" style="float:left"><%= link_to product.title, product  %></p>
+              <p class="card-text" style="float:right;margin-left:10%"> $ <%= product.price %></p>
+              <div style="clear:both"></div>
+              <%= link_to 'Add To Cart', product , class:"btn btn-outline-info" %>
+              <% if user_signed_in? %>
+                <% if current_user.is_seller? %>
+                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger glyphicon glyphicon-remove", style:"margin-left:20%;" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+    <% end %>  
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+  </div>
+  <br><br>
+  <% if user_signed_in? %>
+    <% if current_user.is_seller? %>
+      <%= link_to 'New Product', new_product_path ,class:"btn btn-success" %>
+    <% end %>
+  <% end %>
+  
 
-<br>
-
-<%= link_to 'New Product', new_product_path %>
-<% end %>
-<% else %>
- <p>Use the search form to search for product.</p>
-<% end %>
+  </div>

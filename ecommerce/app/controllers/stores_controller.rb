@@ -1,5 +1,5 @@
 class StoresController < InheritedResources::Base
-  before_action :authenticate_user!, except: [:index]
+  #before_action :authenticate_user!, except: [:index]
   # include CanCan::ControllerAdditions
   # load_and_authorize_resource
 

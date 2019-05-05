@@ -12,3 +12,15 @@
  *
  */
  @import "bootstrap";
+ ul{
+     list-style: none;
+     li{
+         padding-right: 10px;
+         padding-left: 10px;
+     }
+ }
+
+
+ .full-min-height{
+     min-height: 620px;
+ }

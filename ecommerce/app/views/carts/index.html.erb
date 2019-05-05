@@ -1,8 +1,9 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Carts</h1>
+<h2 style="color:#4a4a96;">Carts</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Product</th>
@@ -32,3 +33,8 @@
 <br>
 <span>total cost is  </span>
 <h3><%= @total %></h3>
+
+
+<%= link_to 'New Order', new_order_path %>
+
+</div>
