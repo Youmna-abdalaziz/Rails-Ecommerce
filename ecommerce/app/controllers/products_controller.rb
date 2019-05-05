@@ -1,5 +1,5 @@
 class ProductsController < InheritedResources::Base
-  #before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
     # include CanCan::ControllerAdditions
   # load_and_authorize_resource
   def index

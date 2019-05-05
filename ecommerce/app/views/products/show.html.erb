@@ -15,11 +15,11 @@
 				<h2  style="color:#4a4a96;"><%= @product.title %></h2>
         <br>
         <h4 style="color:#4a4a96;">Description: <%= @product.description %></h4>
-        <h4 style="color:#4a4a96;">Price: <%= @product.price %></h4>
+        <h4 style="color:#4a4a96;">Price: $ <%= @product.price %></h4>
         <h4 style="color:#4a4a96;">Brand: <%= @product.product_brand %></h4>
         <h4 style="color:#4a4a96;">Category: <%= @product.product_category %></h4>
       
-        <h4 style="color:#4a4a96;">Quantity In Stock : <%= @product.quantity_in_stock %></h4>
+        <h4 style="color:#4a4a96;"> Available Quantity: <%= @product.quantity_in_stock %></h4>
        <br>
        <br>
 						<%= link_to "Add to cart", carts_path(:product_id => @product.id) ,class:"btn btn-success" %>	
