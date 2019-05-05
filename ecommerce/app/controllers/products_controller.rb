@@ -124,6 +124,8 @@ class ProductsController < InheritedResources::Base
   end
 
   def edit
+    @coupons=Coupon.all
+
     @product = Product.find(params[:id])
     @categories = Category.all
     @brands = Brand.all
