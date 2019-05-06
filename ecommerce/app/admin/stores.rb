@@ -14,7 +14,7 @@ ActiveAdmin.register Store do
                 if @store.save
                 redirect_to "/admin/stores"
                 else
-                    render '/admin/stores/new'
+                    render "new"
                 end
             end
   
