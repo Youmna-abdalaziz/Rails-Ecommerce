@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.name %>
 </p>
 
 <p>
@@ -26,5 +26,9 @@
   <%= @order.address %>
 </p>
 
+<%= @order.order_products %> |                <%# loop to render all order_item_in_product %>
+
+
+<%= link_to 'Show order details', order_products_path(@order.id) %> |
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

@@ -2,7 +2,8 @@ class OrderProductsController < InheritedResources::Base
 
 
   def index
-    @order_products =OrderProduct.all
+    @order = Order.find(params[:order_id])
+    @order_products =@order.order_products
     
   end 
   def show 
