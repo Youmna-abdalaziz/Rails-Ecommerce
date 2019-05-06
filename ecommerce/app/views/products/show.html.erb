@@ -22,7 +22,7 @@
         <h4 style="color:#4a4a96;"> Available Quantity: <%= @product.quantity_in_stock %></h4>
        <br>
        <br>
-						<%= link_to "Add to cart", carts_path(:product_id => @product.id) ,class:"btn btn-success" %>	
+						<%= button_to "Add to cart", carts_path(:product_id => @product.id) ,class:"btn btn-success" %>	
             
             <%= link_to 'Back', products_path  ,class:"btn btn-warning"%>
             
