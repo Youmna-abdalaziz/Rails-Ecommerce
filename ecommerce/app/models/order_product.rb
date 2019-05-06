@@ -3,13 +3,30 @@ class OrderProduct < ApplicationRecord
   belongs_to :product
   belongs_to :user
 
+  def product_price
+    product.price
+  end
 
+  def product_name
+    product.title
+  end
+
+  def product_quantity
+    product.quantity_in_stock
+
+  end
+
+  def user_coupons
+    @user_coupons= current_user.coupons
+  end
 
   def calculate_actual_price
     current_coupon =self.get_coupon
      if (current_coupon.present?) && (self.is_validate_user_coupon current_coupon.id)
         self.actual_price = self.actual_price_with_coupon
-        current_user.coupons << current_coupon        
+        if @user_coupons.present?
+          @user_coupons << current_coupon
+        end         
      else
         self.actual_price = actual_price_without_coupon
      end
