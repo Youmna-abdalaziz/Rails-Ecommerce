@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :carts
   has_many :products ,:through => :carts
+  has_many :cou
 
   validates :name , presence:true, on: :create
   validates :name , presence:true, on: :update
