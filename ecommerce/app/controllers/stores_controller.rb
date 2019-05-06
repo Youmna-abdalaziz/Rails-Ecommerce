@@ -1,16 +1,15 @@
 class StoresController < InheritedResources::Base
-  #before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   # include CanCan::ControllerAdditions
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   def index
     @stores=Store.all
-    # authorize! :read, @store
-  
+    authorize! :crud, @store
   end 
   def new
     @store =Store.new
-    # authorize! :create, @store
+    authorize! :crud, @store
   end
   
   def create
@@ -31,6 +30,7 @@ class StoresController < InheritedResources::Base
     else
         render 'new'
     end
+    authorize! :crud, @store
   end
 
   private

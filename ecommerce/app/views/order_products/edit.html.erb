@@ -1,6 +1,76 @@
-<h1>Editing Order Product</h1>
+<h1>status Order Product</h1>
+<%= form_with(model: @order_product, local: true) do |form| %>
+    <% if @order_product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@order_product.errors.count, "error") %> prohibited this order_product from being saved:</h2>
+  
+        <ul>
+        <% @order_product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <p>
+    <strong>Order:</strong>
+    <%= @order_product.order_id %>
+  </p>
+  
+  <p>
+    <strong>Product:</strong>
+    <%= @order_product.product_name%>
+  </p>
+  
+  <p>
+    <strong>Quantity:</strong>
+    <%= @order_product.quantity %>
+  </p>
+  
+  <p>
+    <strong>Unit price:</strong>
+    <%= @order_product.unit_price %>
+  </p>
+  
+  <p>
+  <strong>quantity in stock:</strong>
+  <%= @order_product.product_quantity %>
+</p>
 
-<%= render 'form', order_product: @order_product %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select( :status ,options_for_select([['pending','pending'],['confirmed','confirmed'],['delivered','delivered']]))%>
+
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+  <%= @product_name %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%= link_to 'Show', @order_product %> |
 <%= link_to 'Back', order_products_path %>

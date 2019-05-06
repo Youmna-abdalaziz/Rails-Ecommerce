@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  expireddate: 2019-04-26 12:42:29
-  D-price: 1
-  precentage: 1
-  usagenum: 1
+#one:
+ # expireddate: 2019-04-26 12:42:29
+  #D-price: 1
+  #precentage: 1
+  #usagenum: 1
 
-two:
-  expireddate: 2019-04-26 12:42:29
-  D-price: 1
-  precentage: 1
-  usagenum: 1
+#two:
+ # expireddate: 2019-04-26 12:42:29
+ # D-price: 1
+ # precentage: 1
+ # usagenum: 1

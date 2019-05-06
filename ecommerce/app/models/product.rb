@@ -2,12 +2,22 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :user
-  belongs_to :coupon
+  belongs_to :coupon, optional: true
   has_one_attached :image
   has_many :order_products
   has_many :orders, :through =>:order_products
   has_many :carts
   has_many :users, :through =>:carts
+
+  
+  validates :title , presence:true, on: :create
+  validates :title , presence:true, on: :update
+  validates :price , presence:true, on: :create
+  validates :price , presence:true, on: :update
+  validates :quantity_in_stock , presence:true, on: :create
+  validates :quantity_in_stock , presence:true, on: :update
+  validates :description , presence:true,:length => { :minimum => 4,:maximum   => 100, } , on: :create
+  validates :description , presence:true,:length => { :minimum => 4,:maximum   => 100, } , on: :update
 
   def product_category
     category.name
@@ -20,8 +30,19 @@ class Product < ApplicationRecord
     user.name
   end
   def product_coupon
-   coupon.title
+   if coupon.present?
+    coupon.title
+   else
+    "No coupon covers this product"
+   end
   end
+
+  
+
+
+
+
+
   def self.search_by(search_term)
     # @Product=Product.where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",search_term: "%#{search_term.downcase}").where("category_id LIKE ?","#{filter_term}")
 

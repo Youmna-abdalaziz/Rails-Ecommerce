@@ -1,15 +1,30 @@
 class ProductsController < InheritedResources::Base
-  #before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
     # include CanCan::ControllerAdditions
-  # load_and_authorize_resource
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:index, :show]
   def index
-    unless  params[:search]
+    if user_signed_in?
+      if current_user.is_seller?
+       @products=Product.where(user_id:current_user.id)
+     else
+        @products=Product.all
+      end
+    else 
       @products=Product.all
-      @brand=Brand.all
-      @category=Category.all    
-      @user=User.all
-      
     end
+    @brand=Brand.all
+    @category=Category.all    
+    @user=User.all
+    # ==========================
+    # unless  params[:search]
+    #   @products=Product.all
+    #   @brand=Brand.all
+    #   @category=Category.all    
+    #   @user=User.all
+      
+    # end
+    # =============================
     # if params[:search] and params[:product][:category_id]=nil
     if params[:search]
       @search_term=params[:search]
@@ -104,7 +119,7 @@ class ProductsController < InheritedResources::Base
     @coupons=Coupon.all
     #  @stores = Store.all 
     #  @users = User.where(id:current_user.id)
-    #  authorize! :crud, @product
+    authorize! :crud, @product
   end
 
   def create
@@ -117,19 +132,37 @@ class ProductsController < InheritedResources::Base
     @product.user_id = current_user.id
     # @product.coupon_id = current_user.id
     if @product.save
-      redirect_to @product
+      redirect_to products_path
     else
         render 'new'
     end
+    authorize! :crud, @product
   end
 
   def edit
+    @coupons=Coupon.all
+
     @product = Product.find(params[:id])
     @categories = Category.all
     @brands = Brand.all
+    @coupons=Coupon.all
     # @stores = Store.all 
-    @users = User.where(id:current_user.id)
-    # authorize! :crud, @product
+    # @users = User.where(id:current_user.id)
+    @product.user_id = current_user.id
+    authorize! :crud, @product
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @categories = Category.all
+    @brands = Brand.all
+    @coupons=Coupon.all
+    if @product.update(product_params)
+      redirect_to @product
+    else
+      render 'edit'
+    end
+    authorize! :crud, @product
   end
 
   private
