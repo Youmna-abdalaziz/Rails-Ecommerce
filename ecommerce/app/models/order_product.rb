@@ -28,7 +28,7 @@ class OrderProduct < ApplicationRecord
           @user_coupons << current_coupon
         end         
      else
-        self.actual_price = actual_price_without_coupon
+        self.actual_price = actual_price_without_coupon        
      end
     self
   end
