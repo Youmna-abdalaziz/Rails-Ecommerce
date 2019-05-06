@@ -10,14 +10,13 @@ class Coupon < ApplicationRecord
 
 
 
-    def validate_coupon
+    def is_valide_coupon
         if self.expiring_type == "Expiring_date"
             return self.expiring_date >= DateTime.now
         elsif self.expiring_type=="Usage_num"
             return self.usage_num > self.current_usage
         else 
             return (self.expiring_date >= DateTime.now) && (self.usage_num > self.current_usage)
-          
         end        
     end
 

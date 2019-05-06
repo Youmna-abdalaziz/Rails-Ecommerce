@@ -22,11 +22,11 @@ class OrderProduct < ApplicationRecord
 
   def calculate_actual_price
     current_coupon =self.get_coupon
-     if (current_coupon.present?) && (self.is_validate_user_coupon current_coupon.id)
+     if (current_coupon.present?) && (self.is_validate_user_coupon current_coupon.id) && (self.is_valide_coupon)
         self.actual_price = self.actual_price_with_coupon
-        if @user_coupons.present?
-          @user_coupons << current_coupon
-        end         
+        self.get_user_coupons << current_coupon  
+        current_coupon.current_usage +=1
+        current_coupon.save
      else
         self.actual_price = actual_price_without_coupon
      end
@@ -35,8 +35,14 @@ class OrderProduct < ApplicationRecord
   def is_validate_user_coupon coupon_id
     self.order.user.is_validate_user_coupon coupon_id
   end
+  def is_valide_coupon 
+    self.get_coupon.is_valide_coupon
+  end
   def get_coupon
     self.product.coupon
+  end
+  def get_user_coupons
+    self.order.user.coupons
   end
   def get_discount_type
     self.product.coupon.discount_Type
