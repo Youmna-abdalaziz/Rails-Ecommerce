@@ -14,9 +14,9 @@ class Coupon < ApplicationRecord
         if self.expiring_type == "Expiring_date"
             return self.expiring_date >= DateTime.now
         elsif self.expiring_type=="Usage_num"
-            return self.usage_num > self.current_usage
+            return self.usage_num.to_i > self.current_usage.to_i
         else 
-            return (self.expiring_date >= DateTime.now) && (self.usage_num > self.current_usage)
+            return (self.expiring_date >= DateTime.now) && (self.usage_num.to_i > self.current_usage.to_i)
         end        
     end
 

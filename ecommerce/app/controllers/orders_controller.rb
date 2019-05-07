@@ -53,6 +53,7 @@ class OrdersController < InheritedResources::Base
          if @order.save 
             total_price = 0
             actual_price = 0 
+            @coupons =[]
             carts.each do|item|
               #######################
                       @order_product=OrderProduct.new
@@ -61,7 +62,13 @@ class OrdersController < InheritedResources::Base
                       @order_product.quantity =item.quantity
                       @order_product.unit_price =item.unit_price
                       @order_product.status="pending"
+                      # @order_product.calculate_actual_price
+                      if @coupons.include?item.product.coupon.id 
+                       @order_product.actual_price =item.unit_price * item.quantity
+                      else
                       @order_product.calculate_actual_price
+                      @coupons.push(item.product.coupon.id )
+                      end
                       @order_product.save
                       ############ after save order _product 
                       total_price += @order_product.quantity * @order_product.unit_price
