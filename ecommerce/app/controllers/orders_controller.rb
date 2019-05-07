@@ -11,23 +11,8 @@ class OrdersController < InheritedResources::Base
     end
    def index
       @orders = current_user.orders
-      #Order.all
    end
-#   def edit
-#       @orders = Order.find(params[:id])
-#   end
-#   def update
-#       @order = Order.find(params[:id])
-    
-#       if @order.update(order_params)
-#         redirect_to @article
-#       else
-#         render 'edit'
-#       end
-#   end
 
- #render plain: params[:article].inspect
-      #render plain: article_params
    def create
     # flash.now[:error] = "Your cart is empty   ."  
     @order = Order.new(order_params)
