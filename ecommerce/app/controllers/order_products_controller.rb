@@ -142,7 +142,8 @@ class OrderProductsController < InheritedResources::Base
       #  @pp= @order_product.product.quantity_in_stock -=1
       #  @product=Product.find(@order_product.product_id)
         # @product.update_attribute(:quantity_in_stock,@pp)
-       render 'show'
+      #render 'show'
+      redirect_to "/order_products"
       else
         render 'edit'
       end
