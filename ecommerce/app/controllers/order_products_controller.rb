@@ -38,15 +38,25 @@ class OrderProductsController < InheritedResources::Base
         # for @order in @orders
         @orders.each do |order|
           @orders_id=order.id
+          @cc=0
           @order_products.each do | order_product|
             @cc+=1
             if order_product.order_id ==@orders_id
               @c+=1
-              if order_product.status == "confirmed"
+              if order_product.status == "confirmed" 
                 @count+=1
               elsif order_product.status == "pending"
                 @cd+=1
-              end        
+              end     
+              if @cc == @order_products.length
+                if @c==@count and @c!=0
+                  order.update(status:"confirmed")
+                end 
+                  @c=0
+                  @count=0
+                  @cd=0
+                end
+              
 
             elsif order_product.order_id !=@orders_id  
               if @c==@count and @c!=0
