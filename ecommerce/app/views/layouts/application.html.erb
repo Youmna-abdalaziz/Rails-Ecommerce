@@ -34,7 +34,7 @@
         <!-- Orders for Sellers -->
         <% if current_user.is_seller? %>
           <li class="nav-item">
-            <%= link_to "Orders",orders_path %>
+            <%= link_to "Orders",order_products_path %>
           </li>
         <!-- Orders history for users -->
         <% else %>
