@@ -50,8 +50,24 @@ class OrderProductsController < InheritedResources::Base
               end     
               if @cc == @order_products.length
                 if @c==@count and @c!=0
+                  if order.status=="pending"
                   order.update(status:"confirmed")
+                  @pro =[]
+                  # --------------------------------------------------
+                  # decrease quantity in stock
+                                    @orderids=OrderProduct.where("order_id = ? ",order.id)
+                                    @orderids.each do |orderid|
+                                      @pro << orderid.product_id
+                                    end
+                                    @prodcts=Product.where(id:@pro)
+                                    @prodcts.each do |prodct|
+                                      @stock=prodct.quantity_in_stock-=1
+                                      prodct.update_attribute(:quantity_in_stock,@stock)
+                                    end
+                  # ================================================
                 end 
+              end
+
                   @c=0
                   @count=0
                   @cd=0
@@ -60,8 +76,25 @@ class OrderProductsController < InheritedResources::Base
 
             elsif order_product.order_id !=@orders_id  
               if @c==@count and @c!=0
+                if order.status =="pending"
+
                 order.update(status:"confirmed")
-              end 
+                @pro =[]
+# --------------------------------------------------
+# decrease quantity in stock
+                  @orderids=OrderProduct.where("order_id = ? ",order.id)
+                  @orderids.each do |orderid|
+                    @pro << orderid.product_id
+                  end
+                  @prodcts=Product.where(id:@pro)
+                  @prodcts.each do |prodct|
+                    @stock=prodct.quantity_in_stock-=1
+                    prodct.update_attribute(:quantity_in_stock,@stock)
+                  end
+# ================================================
+              end
+            end
+
               @c=0
               @count=0
               @cd=0
@@ -101,12 +134,15 @@ class OrderProductsController < InheritedResources::Base
       # authorize! :crud, @product
     end
     def update
-      @product_quantity = OrderProduct.find(params[:id])
+      # @product=
+      @order_product = OrderProduct.find(params[:id])
    
-      if @product_quantity.update(order_product_params)
-        @product_quantity = OrderProduct.find(params[:id])
-        @product_quantity.product.quantity_in_stock -=1
-        redirect_to @product_quantity
+      if @order_product.update(order_product_params) and @order_product.status=="confirmed"
+        # @dd=1
+      #  @pp= @order_product.product.quantity_in_stock -=1
+      #  @product=Product.find(@order_product.product_id)
+        # @product.update_attribute(:quantity_in_stock,@pp)
+       render 'show'
       else
         render 'edit'
       end
