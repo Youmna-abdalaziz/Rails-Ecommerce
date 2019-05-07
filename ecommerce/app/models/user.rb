@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
  def is_validate_user_coupon coupon_id
-           ! self.coupons[coupon_id].present?     ###  in model user or coupon_user   
+           ! self.coupons.ids.include?coupon_id     ###  in model user or coupon_user   
  end
 
 
