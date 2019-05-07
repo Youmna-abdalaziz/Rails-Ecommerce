@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_183617) do
     t.string "expiring_type"
     t.integer "discount_value"
     t.string "discount_Type"
-    t.integer "current_usage"
+    t.integer "current_usage", default: 0
     t.integer "usage_num"
     t.datetime "expiring_date"
     t.string "title"

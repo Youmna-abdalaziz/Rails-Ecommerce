@@ -18,14 +18,15 @@
         <h4 style="color:#4a4a96;">Price: $ <%= @product.price %></h4>
         <h4 style="color:#4a4a96;">Brand: <%= @product.product_brand %></h4>
         <h4 style="color:#4a4a96;">Category: <%= @product.product_category %></h4>
-      
+        <h4 style="color:#4a4a96;">Coupon: <%= @product.product_coupon %></h4>
+        <h4 style="color:#4a4a96;">Seller: <%= @product.product_seller %></h4>
         <h4 style="color:#4a4a96;"> Available Quantity: <%= @product.quantity_in_stock %></h4>
-       <br>
+        <br>
        <br>
 						<%= button_to "Add to cart", carts_path(:product_id => @product.id) ,class:"btn btn-success" %>	
             
             <%= link_to 'Back', products_path  ,class:"btn btn-warning"%>
-            y
+            
             <br><br>
 
             <%
