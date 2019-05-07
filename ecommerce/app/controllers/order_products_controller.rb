@@ -57,13 +57,14 @@ class OrderProductsController < InheritedResources::Base
                   # decrease quantity in stock
                                     @orderids=OrderProduct.where("order_id = ? ",order.id)
                                     @orderids.each do |orderid|
-                                      @pro << orderid.product_id
-                                    end
-                                    @prodcts=Product.where(id:@pro)
+                                      #@pro << orderid.product_id
+                                    #end
+                                    @prodcts=Product.where(id:orderid.product_id)
                                     @prodcts.each do |prodct|
-                                      @stock=prodct.quantity_in_stock-=1
+                                      @stock=prodct.quantity_in_stock=prodct.quantity_in_stock-orderid.quantity
                                       prodct.update_attribute(:quantity_in_stock,@stock)
                                     end
+                                  end
                   # ================================================
                 end 
               end
@@ -84,13 +85,14 @@ class OrderProductsController < InheritedResources::Base
 # decrease quantity in stock
                   @orderids=OrderProduct.where("order_id = ? ",order.id)
                   @orderids.each do |orderid|
-                    @pro << orderid.product_id
-                  end
-                  @prodcts=Product.where(id:@pro)
+                    #@pro << orderid.product_id
+                  #end
+                  @prodcts=Product.where(id:orderid.product_id)
                   @prodcts.each do |prodct|
-                    @stock=prodct.quantity_in_stock-=1
+                    @stock=prodct.quantity_in_stock=prodct.quantity_in_stock-orderid.quantity
                     prodct.update_attribute(:quantity_in_stock,@stock)
                   end
+                end
 # ================================================
               end
             end
