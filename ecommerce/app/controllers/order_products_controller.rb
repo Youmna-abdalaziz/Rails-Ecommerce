@@ -15,7 +15,6 @@ class OrderProductsController < InheritedResources::Base
        @order_products=OrderProduct.where(product_id:@p)    
       end
 
-      # @order_products=OrderProduct.all
         @product = Product.all
         @orders=Order.all
 
@@ -52,19 +51,17 @@ class OrderProductsController < InheritedResources::Base
                 if @c==@count and @c!=0
                   if order.status=="pending"
                   order.update(status:"confirmed")
-                  @pro =[]
                   # --------------------------------------------------
                   # decrease quantity in stock
-                                    @orderids=OrderProduct.where("order_id = ? ",order.id)
-                                    @orderids.each do |orderid|
-                                      #@pro << orderid.product_id
-                                    #end
-                                    @prodcts=Product.where(id:orderid.product_id)
-                                    @prodcts.each do |prodct|
-                                      @stock=prodct.quantity_in_stock=prodct.quantity_in_stock-orderid.quantity
-                                      prodct.update_attribute(:quantity_in_stock,@stock)
-                                    end
-                                  end
+                  @orderids=OrderProduct.where("order_id = ? ",order.id)
+                  @orderids.each do |orderid|
+                    @prodcts=Product.where(id:orderid.product_id)
+                    @prodcts.each do |prodct|
+                    @stock=prodct.quantity_in_stock=prodct.quantity_in_stock-orderid.quantity
+                    prodct.update_attribute(:quantity_in_stock,@stock)
+                  end
+                end
+           
                   # ================================================
                 end 
               end
@@ -84,11 +81,10 @@ class OrderProductsController < InheritedResources::Base
 # --------------------------------------------------
 # decrease quantity in stock
                   @orderids=OrderProduct.where("order_id = ? ",order.id)
-                  @orderids.each do |orderid|
-                    #@pro << orderid.product_id
-                  #end
-                  @prodcts=Product.where(id:orderid.product_id)
-                  @prodcts.each do |prodct|
+                  
+                  @orderids.each do |orderid|                  
+                    @prodcts=Product.where(id:orderid.product_id)
+                    @prodcts.each do |prodct|
                     @stock=prodct.quantity_in_stock=prodct.quantity_in_stock-orderid.quantity
                     prodct.update_attribute(:quantity_in_stock,@stock)
                   end
@@ -113,7 +109,6 @@ class OrderProductsController < InheritedResources::Base
       @order_product = OrderProduct.new(product_params)
       puts "=============== #{product_params}==================="
       @product.user_id = current_user.id
-      # @product.coupon_id = current_user.id
       if @product.save
         redirect_to @product
       else
@@ -122,13 +117,10 @@ class OrderProductsController < InheritedResources::Base
     end
   
     def edit
-      # @coupons=Coupon.all
       if @product_quantity != 0
         @order_product = OrderProduct.find(params[:id])
         @product = Product.all
-        # @oo=@product.find(params[:quantity_in_stock])
         @order =Order.all
-        # @stores = Store.all 
         @users = User.where(id:current_user.id)
       else
         render 'index'
@@ -136,14 +128,9 @@ class OrderProductsController < InheritedResources::Base
       # authorize! :crud, @product
     end
     def update
-      # @product=
       @order_product = OrderProduct.find(params[:id])
    
       if @order_product.update(order_product_params) and @order_product.status=="confirmed"
-        # @dd=1
-      #  @pp= @order_product.product.quantity_in_stock -=1
-      #  @product=Product.find(@order_product.product_id)
-        # @product.update_attribute(:quantity_in_stock,@pp)
       #render 'show'
       redirect_to "/order_products"
       else

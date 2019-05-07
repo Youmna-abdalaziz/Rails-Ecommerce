@@ -16,14 +16,6 @@ class ProductsController < InheritedResources::Base
     @brand=Brand.all
     @category=Category.all    
     @user=User.all
-    # ==========================
-    # unless  params[:search]
-    #   @products=Product.all
-    #   @brand=Brand.all
-    #   @category=Category.all    
-    #   @user=User.all
-      
-    # end
     # =============================
     # if params[:search] and params[:product][:category_id]=nil
     if params[:search]
@@ -62,23 +54,7 @@ class ProductsController < InheritedResources::Base
         @search_term=params[:search]
         @tprice =params[:toprice][:tprice]
         @price =params[:fromprice][:price]
-        # if params[:product][:user_id] !=''
-        #   @seller=params[:product][:user_id]
-        # else
-        #   @seller=User.all
-        # end
-        # if params[:product][:brand_id] !=''
-        #   @brand=params[:product][:brand_id]
-        # else
-        #   @brand=Brand.all        
-        # end
-        # if params[:product][:category_id] !=''
-        #   @filter_term=params[:product][:category_id]
-        # else
-        #   @category=Category.all             
-        # end
-        # @filter_term=params[:product][:category_id]
-
+       
         @products=Product.filterp(@price,@tprice,@search_term,)
         @seller=User.all
         @brand=Brand.all
