@@ -71,7 +71,7 @@ class OrdersController < InheritedResources::Base
               @order.total_price = total_price
               @order.save
               current_user.carts.delete_all
-              redirect_to @order
+              redirect_to "/orders"
             else
               render 'new'
             end
