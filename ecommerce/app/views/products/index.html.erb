@@ -33,8 +33,8 @@
 					<div class="card" style="width: 18rem; margin-top: 45px; margin-right: 3%;">
             <% if product.image.attached? %>
               <%= image_tag product.image  , class:"card-img-top" , style:"height:90%"%>
-            <%else%>
-              <%= image_tag 'app/assets/images/myavatar.png'
+            <% else %>
+              <%= image_tag 'app/assets/images/myavatar.png' %>
             <% end %>
             <div class="card-body" style="height:40%" >
               <p class="card-title" style="float:left"><%= link_to product.title, product  %></p>
