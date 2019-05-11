@@ -5,6 +5,8 @@
 			<div style="width:100%">
 				<% if @product.image.attached? %>
             <%= image_tag @product.image ,style:"width:100%;border-radius:30px;"%>
+        <%else%>
+            <%= image_tag 'app/assets/images/myavatar.png'
         <% end %>
 							
 			</div>
